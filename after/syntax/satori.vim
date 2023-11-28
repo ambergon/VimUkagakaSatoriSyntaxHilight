@@ -1,32 +1,43 @@
-"""ファイルタイプsatoriを作成しておく必要がある。
 
+"{{{
+"行頭記号
 "コメントアウト
-syn region SatoriComment start="^＃" end="$"
+syn region SatoriComment start="^＃" end="$" oneline
 hi def link SatoriComment Comment
 
+"function
+syn region SatoriFunction start="^＊" end="$" oneline
+hi def link SatoriFunction Type
+
+"function
+syn region SatoriAFunction start="^＠" end="$" oneline
+hi def link SatoriAFunction Type
+
+"set var
+syn region SatoriSetVar start="^＄" end="=" oneline
+hi def link SatoriSetVar PreProc
+syn region SatoriSetVarTab start="^＄" end="	" oneline
+hi def link SatoriSetVarTab PreProc
+
+"}}}
+"{{{
+"サクラスクリプト
 "surface
 syn match SatoriSurface "\\s\[.\{-}\]"
 hi def link SatoriSurface Special
+"}}}
+"{{{
+"特殊変数
+"OnEvent
+syn match SatoriEventVar "（R\d\{-}）"
+hi def link SatoriEventVar PreProc
 
-"function
-syn region SatoriFunction start="^＊" end="$"
-hi def link SatoriFunction Type
+"SAORI
+syn match SatoriSaoriVar "（S\d\{-}）"
+hi def link SatoriSaoriVar Special
 
-"var
-syn match SatoriVar "（.\{-}）"
-hi def link SatoriVar PreProc
-
-"Hankaku var
-syn match SatoriHanVar "(.\{-})"
-hi def link SatoriHanVar PreProc
-
-"set var
-syn region SatoriSetVar start="^＄" end="$"
-hi def link SatoriSetVar PreProc
-
-
-
-
-
-
+"Call var
+syn match SatoriSaoriVar "（A\d\{-}）"
+hi def link SatoriSaoriVar SpecialKey
+"}}}
 
